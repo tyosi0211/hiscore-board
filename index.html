@@ -21,102 +21,96 @@ table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;}
 th{text-align:left;font-size:12px;color:var(--dim);border-bottom:2px solid rgba(255,255,255,.28);padding:4px;letter-spacing:.10em;}
 td{padding:7px 4px;font-size:14px;}
 td.rank{width:14%;color:var(--w);}
-td.title{width:60%;color:var(--w);}
-td.score{width:26%;text-align:right;color:var(--y);font-weight:900;}
-tbody.rankBody tr:first-child td.score{animation:blink 1s steps(1) infinite;}
+td.player{width:60%;color:var(--w);}
+td.mvp{width:26%;text-align:right;color:var(--y);font-weight:900;}
+tbody.rankBody tr:first-child td.mvp{animation:blink 1s steps(1) infinite;}
 @keyframes blink{50%{opacity:0;}}
 .update{margin-top:14px;border:3px solid var(--c);padding:10px 10px 8px;}
 .update h3{margin:0 0 8px;color:var(--c);letter-spacing:.18em;font-size:16px;}
 .update table{margin-top:8px;}
 .update td.score{color:var(--c);font-weight:900;}
+.modeLabel{margin:6px 0 2px;font-weight:900;letter-spacing:.12em;}
 .insertCoin{text-align:center;margin-top:12px;color:var(--y);letter-spacing:.12em;animation:blink 1s steps(1) infinite;}
 </style>
 </head>
 <body>
 <div class="screen">
-  <img src="pac_title.svg" class="pacTitle" alt="HI-SCORE BOARD">
-  <div class="subtitle">UPDATED: 2025/12/28 11:31</div>
+  <div class="titleText">HI-SCORE BOARD</div>
+  <div class="subtitle">UPDATED: 2025/12/28 12:57</div>
   <div class="panels" id="root"></div>
   <div id="updates"></div>
   <div class="insertCoin">INSERT COIN ▶</div>
 </div>
 
 <script>
-const DATA = {"updatedAt":"2025/12/28 11:31","ranking":[{"name":"HI-SCORE","rows":[{"rank":1,"title":"BIG7657651_","score":16},{"rank":2,"title":"CLOBTA_","score":16},{"rank":3,"title":"tyosi0211","score":14},{"rank":4,"title":"Ikazabihs","score":12},{"rank":5,"title":"kumori-0706","score":10},{"rank":6,"title":"MBK-GIL","score":9},{"rank":7,"title":"T3-TBC","score":8},{"rank":8,"title":"bh700","score":8},{"rank":9,"title":"kensue316x68000","score":8},{"rank":10,"title":"lovely-dakota","score":8}]},{"name":"CARAVAN","rows":[{"rank":1,"title":"T3-CYR-WIZ","score":48},{"rank":2,"title":"CLOBTA_","score":37},{"rank":3,"title":"T3-TBC","score":16},{"rank":4,"title":"bh700","score":15},{"rank":5,"title":"MBK-GIL","score":14},{"rank":6,"title":"misorice","score":13},{"rank":7,"title":"savecolony","score":9},{"rank":8,"title":"Game-Beginner00","score":9},{"rank":9,"title":"lettuce702","score":8},{"rank":10,"title":"kumori-0706","score":8}]}],"update":[{"name":"ハイスコア","rows":[{"title":"ダライアスII","score":"3559340","name":"bucky1389"},{"title":"レゾン","score":"612800","name":"kakigorikun"},{"title":"闘姫伝承","score":"1445700","name":"akogiya4"},{"title":"チャンピオンレスラー","score":"59717700","name":"ohfivepro_uk"},{"title":"スーパーバレーボール","score":"70300","name":"mkl4work"},{"title":"ガンネイル","score":"33489100","name":"gifted-star6"},{"title":"ミズバク大冒険","score":"1702870","name":"pharaohskullman"},{"title":"バンダイク","score":"2562740","name":"fuzunu3"},{"title":"ダーウィン4078","score":"9999990","name":"nmrzmbrdtw"},{"title":"雷電","score":"19223100","name":"rikilariat"},{"title":"フリスキー・トム","score":"90950","name":"tinmsg1979"},{"title":"サボテンボンバーズ","score":"99119400","name":"hiro9924"},{"title":"大王","score":"12465590","name":"T3-TBC"},{"title":"ダイノレックス","score":"2808000","name":"y-3322"},{"title":"ショーリンズロード","score":"16000100","name":"ittugittug"},{"title":"VS. ワルキューレの冒険 時の鍵伝説","score":"12:23　15190","name":"ma-ji__"},{"title":"ブラストオフ","score":"1239350","name":"kensue316x68000"}]},{"name":"キャラバン","rows":[{"title":"レゾン","score":"86900","name":"kakigorikun"},{"title":"闘姫伝承 ANGEL EYES","score":"1613900","name":"tabasalv32"},{"title":"チャンピオンレスラー","score":"9111500","name":"fuzunu3"},{"title":"スーパーバレーボール","score":"44100","name":"kanitamax2001"},{"title":"ミズバク大冒険","score":"1121570","name":"savecolony"},{"title":"バンダイク","score":"500780","name":"Hamukatsu-ojisan"},{"title":"ダーウィン4078","score":"80170","name":"spidimhd"},{"title":"雷電","score":"208230","name":"rikilariat"},{"title":"タスクフォースハリアー","score":"346000","name":"T3-CYR-WIZ"},{"title":"フリスキー・トム","score":"41850","name":"DB_o2a4"},{"title":"サボテンボンバーズ","score":"6869200","name":"onoff0109"},{"title":"サンダードラゴン","score":"415700","name":"T3-CYR-WIZ"},{"title":"サンダードラゴン","score":"1112200","name":"T3-CYR-WIZ"},{"title":"出たな!! ツインビー","score":"414000","name":"T3-TBC"},{"title":"ブランディア","score":"7009","name":"nemakura"},{"title":"バーニングフォース","score":"151990","name":"ympc-ympc"},{"title":"大王","score":"21432530","name":"T3-CYR-WIZ"},{"title":"ショーリンズロード","score":"163400","name":"ittugittug"},{"title":"ポールポジションII","score":"9.25","name":"kumori-0706"},{"title":"ミスティックウォリアーズ","score":"76340","name":"TomyTake4"},{"title":"メタモルフィックフォース","score":"100800","name":"lettuce702"},{"title":"メタモルフィックフォース","score":"117","name":"lettuce702"},{"title":"雷軋斗","score":"401","name":"meganegamer2"},{"title":"VS. カイの冒険","score":"117F 59700","name":"CLOBTA_"},{"title":"コナミのピンポン","score":"83550","name":"kumori-0706"},{"title":"サンダークロス","score":"228860","name":"T3-CYR-WIZ"},{"title":"サンダークロス","score":"228900","name":"T3-CYR-WIZ"},{"title":"バイパーフェイズ1","score":"739364","name":"T3-TBC"},{"title":"バミューダトライアングル","score":"150200","name":"T3-TBC"},{"title":"ロックンロープ","score":"160900","name":"dochinasumomo946"}]}]};
+const DATA = {"updatedAt":"2025/12/28 12:57","ranking":[{"name":"HI-SCORE","rows":[{"rank":1,"player":"BIG7657651_","mvp":16},{"rank":2,"player":"CLOBTA_","mvp":16},{"rank":3,"player":"tyosi0211","mvp":14},{"rank":4,"player":"Ikazabihs","mvp":12},{"rank":5,"player":"kumori-0706","mvp":10},{"rank":6,"player":"MBK-GIL","mvp":9},{"rank":7,"player":"T3-TBC","mvp":8},{"rank":8,"player":"bh700","mvp":8},{"rank":9,"player":"kensue316x68000","mvp":8},{"rank":10,"player":"lovely-dakota","mvp":8}]},{"name":"CARAVAN","rows":[{"rank":1,"player":"T3-CYR-WIZ","mvp":48},{"rank":2,"player":"CLOBTA_","mvp":37},{"rank":3,"player":"T3-TBC","mvp":16},{"rank":4,"player":"bh700","mvp":15},{"rank":5,"player":"MBK-GIL","mvp":14},{"rank":6,"player":"misorice","mvp":13},{"rank":7,"player":"savecolony","mvp":9},{"rank":8,"player":"Game-Beginner00","mvp":9},{"rank":9,"player":"lettuce702","mvp":8},{"rank":10,"player":"kumori-0706","mvp":8}]}],"update":[{"name":"ハイスコア","rows":[{"game":"ダライアスII","score":"3559340","name":"bucky1389"},{"game":"レゾン","score":"612800","name":"kakigorikun"},{"game":"闘姫伝承","score":"1445700","name":"akogiya4"},{"game":"チャンピオンレスラー","score":"59717700","name":"ohfivepro_uk"},{"game":"スーパーバレーボール","score":"70300","name":"mkl4work"},{"game":"ガンネイル","score":"33489100","name":"gifted-star6"},{"game":"ミズバク大冒険","score":"1702870","name":"pharaohskullman"},{"game":"バンダイク","score":"2562740","name":"fuzunu3"},{"game":"ダーウィン4078","score":"9999990","name":"nmrzmbrdtw"},{"game":"雷電","score":"19223100","name":"rikilariat"},{"game":"フリスキー・トム","score":"90950","name":"tinmsg1979"},{"game":"サボテンボンバーズ","score":"99119400","name":"hiro9924"},{"game":"大王","score":"12465590","name":"T3-TBC"},{"game":"ダイノレックス","score":"2808000","name":"y-3322"},{"game":"ショーリンズロード","score":"16000100","name":"ittugittug"},{"game":"VS. ワルキューレの冒険 時の鍵伝説","score":"12:23　15190","name":"ma-ji__"},{"game":"ブラストオフ","score":"1239350","name":"kensue316x68000"}]},{"name":"キャラバン","rows":[{"game":"レゾン","score":"86900","name":"kakigorikun"},{"game":"闘姫伝承 ANGEL EYES","score":"1613900","name":"tabasalv32"},{"game":"チャンピオンレスラー","score":"9111500","name":"fuzunu3"},{"game":"スーパーバレーボール","score":"44100","name":"kanitamax2001"},{"game":"ミズバク大冒険","score":"1121570","name":"savecolony"},{"game":"バンダイク","score":"500780","name":"Hamukatsu-ojisan"},{"game":"ダーウィン4078","score":"80170","name":"spidimhd"},{"game":"雷電","score":"208230","name":"rikilariat"},{"game":"タスクフォースハリアー","score":"346000","name":"T3-CYR-WIZ"},{"game":"フリスキー・トム","score":"41850","name":"DB_o2a4"},{"game":"サボテンボンバーズ","score":"6869200","name":"onoff0109"},{"game":"サンダードラゴン","score":"415700","name":"T3-CYR-WIZ"},{"game":"サンダードラゴン","score":"1112200","name":"T3-CYR-WIZ"},{"game":"出たな!! ツインビー","score":"414000","name":"T3-TBC"},{"game":"ブランディア","score":"7009","name":"nemakura"},{"game":"バーニングフォース","score":"151990","name":"ympc-ympc"},{"game":"大王","score":"21432530","name":"T3-CYR-WIZ"},{"game":"ショーリンズロード","score":"163400","name":"ittugittug"},{"game":"ポールポジションII","score":"9.25","name":"kumori-0706"},{"game":"ミスティックウォリアーズ","score":"76340","name":"TomyTake4"},{"game":"メタモルフィックフォース","score":"100800","name":"lettuce702"},{"game":"メタモルフィックフォース","score":"117","name":"lettuce702"},{"game":"雷軋斗","score":"401","name":"meganegamer2"},{"game":"VS. カイの冒険","score":"117F 59700","name":"CLOBTA_"},{"game":"コナミのピンポン","score":"83550","name":"kumori-0706"},{"game":"サンダークロス","score":"228860","name":"T3-CYR-WIZ"},{"game":"サンダークロス","score":"228900","name":"T3-CYR-WIZ"},{"game":"バイパーフェイズ1","score":"739364","name":"T3-TBC"},{"game":"バミューダトライアングル","score":"150200","name":"T3-TBC"},{"game":"ロックンロープ","score":"160900","name":"dochinasumomo946"}]}]};
 const root = document.getElementById("root");
+const upd  = document.getElementById("updates");
 
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+function esc(s){
+  return String(s??"").replace(/[&<>"']/g,function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c];
+  });
+}
 function fmt(n){
   const s=String(n??"");
   if(!/^\d+$/.test(s)) return s;
   return Number(s).toLocaleString("ja-JP");
 }
 
-(DATA.ranking || []).forEach(function(m){
-  var d = document.createElement("div");
-  d.className = "panel";
-  d.dataset.mode = m.name;
+// ===== RANKING =====
+(DATA.ranking||[]).forEach(function(m){
+  const d=document.createElement("div");
+  d.className="panel";
+  d.dataset.mode=m.name;
 
-var rowsHtml = (m.rows || []).map(function(r){
-  return (
-    "<tr>" +
-      "<td>" + esc(r.name ?? "") + "</td>" +
-      "<td class="score">" + fmt(r.score) + "</td>" +
-      "<td>" + esc(String(r.title ?? "").replace(/[\n\r]/g,"")) + "</td>" +
-    "</tr>"
-  );
-}).join("");
-
+  const rowsHtml=(m.rows||[]).map(function(r){
+    return "<tr>"
+      + "<td class=\"rank\">"+esc(r.rank ?? "")+"</td>"
+      + "<td class=\"player\">"+esc(String(r.player ?? "").replace(/[\n\r]/g,""))+"</td>"
+      + "<td class=\"mvp\">"+fmt(r.mvp)+"</td>"
+      + "</tr>";
+  }).join("");
 
   d.innerHTML =
-    "<h2>" + esc(m.name) + "</h2>" +
-    "<table>" +
-      "<thead><tr><th>Rank</th><th>Player</th><th>MVP Count</th></tr></thead>" +
-      "<tbody class="rankBody">" + rowsHtml + "</tbody>" +
-    "</table>";
+    "<h2>"+esc(m.name)+"</h2>"
+    + "<table>"
+    + "<thead><tr><th>Rank</th><th>Player</th><th>MVP Count</th></tr></thead>"
+    + "<tbody class=\"rankBody\">"+rowsHtml+"</tbody>"
+    + "</table>";
 
   root.appendChild(d);
 });
 
-
-
-const upd=document.getElementById("updates");
+// ===== UPDATE LOG（モード見出し付き）=====
 if (DATA.update && DATA.update.length){
   const box=document.createElement("div");
   box.className="update";
   box.innerHTML="<h3>UPDATE LOG</h3>";
 
-DATA.update.forEach(function(m){
-  var label = esc(m.name || "");
+  (DATA.update||[]).forEach(function(m){
+    const label = String(m.name || "");
+    const h=document.createElement("div");
+    h.className="modeLabel";
+    h.style.color = (label.indexOf("キャラバン") !== -1) ? "var(--c)" : "var(--y)";
+    h.textContent = "▶ " + label;
 
-  var h = document.createElement("div");
-  h.style.margin = "6px 0 2px";
-  h.style.fontWeight = "900";
-  h.style.letterSpacing = ".12em";
-  h.style.color = (label.indexOf("キャラバン") !== -1) ? "var(--c)" : "var(--y)";
-  h.textContent = "▶ " + label.toUpperCase();
+    const rowsHtml=(m.rows||[]).map(function(r){
+      return "<tr>"
+        + "<td>"+esc(r.name ?? "")+"</td>"
+        + "<td class=\"score\">"+esc(r.score ?? "")+"</td>"
+        + "<td>"+esc(String(r.game ?? "").replace(/[\n\r]/g,""))+"</td>"
+        + "</tr>";
+    }).join("");
 
-  var t = document.createElement("table");
+    const t=document.createElement("table");
+    t.innerHTML =
+      "<thead><tr><th>Player</th><th>Score</th><th>Game</th></tr></thead>"
+      + "<tbody>"+rowsHtml+"</tbody>";
 
-  var rowsHtml = (m.rows || []).map(function(r){
-    return (
-      "<tr>" +
-        "<td>" + esc(r.name ?? "") + "</td>" +
-        "<td class="score">" + fmt(r.score) + "</td>" +
-        "<td>" + esc(String(r.title ?? "").replace(/[\n\r]/g,"")) + "</td>" +
-      "</tr>"
-    );
-  }).join("");
-
-  t.innerHTML =
-    "<thead><tr><th>Player</th><th>MVP Count</th><th>Game</th></tr></thead>" +
-    "<tbody>" + rowsHtml + "</tbody>";
-
-  box.appendChild(h);
-  box.appendChild(t);
-});
-
-
+    box.appendChild(h);
+    box.appendChild(t);
+  });
 
   upd.appendChild(box);
 }
